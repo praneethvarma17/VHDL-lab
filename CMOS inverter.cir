@@ -1,0 +1,33 @@
+*Inverter char
+vdd 1 0 dc 5
+vin 2 0 dc 0
+mp 3 2 1 1 modp w=10u l=1u
+mn 4 2 0 0 modn w=4u l=1u
+vdum 3 4 0
+.dc vin 0 5 0.01
+.plot dc v(2) v(3)
+.plot dc i(vdum)
+
+******Device Models**************
+
+.MODEL MODn NMOS LEVEL  = 3                  
++ TOX    = 200E-10         NSUB   = 1E17            GAMMA  = 0.5          
++ PHI    = 0.7             VTO    = 0.8             DELTA  = 3.0         
++ UO     = 650             ETA    = 3.0E-6          THETA  = 0.1          
++ KP     = 120E-6          VMAX   = 1E5             KAPPA  = 0.3                
++ RSH    = 0               NFS    = 1E12            TPG    = 1                  
++ XJ     = 500E-9          LD     = 100E-9                 
++ CGDO   = 200E-12         CGSO   = 200E-12         CGBO   = 1E-10              
++ CJ     = 400E-6          PB     = 1               MJ     = 0.5           
++ CJSW   = 300E-12         MJSW   = 0.5                                  
+*                                                                               
+.MODEL MODp PMOS LEVEL  = 3                  
++ TOX    = 200E-10         NSUB   = 1E17            GAMMA  = 0.6          
++ PHI    = 0.7             VTO    = -0.9            DELTA  = 0.1          
++ UO     = 250             ETA    = 0               THETA  = 0.1         
++ KP     = 40E-6           VMAX   = 5E4             KAPPA  = 1         
++ RSH    = 0               NFS    = 1E12            TPG    = -1                 
++ XJ     = 500E-9          LD     = 100E-9               
++ CGDO   = 200E-12         CGSO   = 200E-12         CGBO   = 1E-10              
++ CJ     = 400E-6          PB     = 1               MJ     = 0.5                
++ CJSW   = 300E-12         MJSW   = 0.5
