@@ -1,0 +1,41 @@
+NOR gate
+CL 4 0 100fF
+vdd 1 0 dc 5
+mp1 3 2 1 1 modp w=10u l=1u
+mp2 4 5 3 3 modp w=10u l=1u
+mn1 4 2 0 0 modn w=4u l=1u
+mn2 4 5 0 0 modn w=4u l=1u
+vin1 2 0 DC 0 PWL (0n,0)(5n,0)(10n,0)(10.001n,5)(20n,5)
+vin2 5 0 DC 0 PWL (0n,0)(5n,0)(5.001n,5)(10n,5)(10.001n,0)(15n,0)(15.001n,5)(20n,5)
+.TRAN 1ns 20ns
+.PLOT TRAN v(5)
+.PLOT TRAN v(2)
+.PLOT TRAN v(4)
+
+
+
+
+
+**Device Models***
+
+.MODEL MODn NMOS LEVEL  = 3
++ TOX    = 200E-10         NSUB   = 1E17            GAMMA  = 0.5
++ PHI    = 0.7             VTO    = 0.8             DELTA  = 3.0
++ UO     = 650             ETA    = 3.0E-6          THETA  = 0.1
++ KP     = 120E-6          VMAX   = 1E5             KAPPA  = 0.3
++ RSH    = 0               NFS    = 1E12            TPG    = 1
++ XJ     = 500E-9          LD     = 100E-9
++ CGDO   = 200E-12         CGSO   = 200E-12         CGBO   = 1E-10
++ CJ     = 400E-6          PB     = 1               MJ     = 0.5
++ CJSW   = 300E-12         MJSW   = 0.5
+*
+.MODEL MODp PMOS LEVEL  = 3
++ TOX    = 200E-10         NSUB   = 1E17            GAMMA  = 0.6
++ PHI    = 0.7             VTO    = -0.9            DELTA  = 0.1
++ UO     = 250             ETA    = 0               THETA  = 0.1
++ KP     = 40E-6           VMAX   = 5E4             KAPPA  = 1
++ RSH    = 0               NFS    = 1E12            TPG    = -1
++ XJ     = 500E-9          LD     = 100E-9
++ CGDO   = 200E-12         CGSO   = 200E-12         CGBO   = 1E-10
++ CJ     = 400E-6          PB     = 1               MJ     = 0.5
++ CJSW   = 300E-12         MJSW   = 0.5
